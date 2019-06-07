@@ -1,3 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+nav {
+    width: 50%;
+}
 nav ul {
     list-style: none;
+    overflow: hidden;
+    width: 100%;
+}
+nav ul li {
+    float: left;
+    width: 33.3%;
+    text-align: center;
+}
+nav a {
+    text-decoration: none;
+    display: block;
+    color: black;
+    background-color: rgba(83, 199, 72, 0.747);
+    padding: 10px 20px;
+}
+nav a:active {
+    background-color: rgb(40, 139, 27);
+}
+nav a:hover {
+    background-color: black;
+    color: white;
 }
