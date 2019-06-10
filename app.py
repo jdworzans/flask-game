@@ -5,15 +5,12 @@ app = Flask(__name__)
 
 
 @app.route("/")
-<<<<<<< HEAD
 def index():
     return(render_template("base.html"))
 
 @app.route("/play")
 def play():
-    return(render_template("jschessboard.html"))
-=======
-
+    return(render_template("game.html"))
 
 @app.route("/help")
 def help():
@@ -22,4 +19,3 @@ def help():
 @app.route("/about")
 def about():
     return(render_template("base.html"))
->>>>>>> a629b9973f1beaaf9732d63c8a726bbc6055c269
