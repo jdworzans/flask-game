@@ -48,3 +48,62 @@ footer {
     max-width: 40em;
     hyphens: auto;
 }
+/*body{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}*/
+ 
+ div *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#game{
+    max-height: 504px;
+    max-width: 504px;
+    width:100%;
+    height: 100%;
+    position: relative;
+    margin: 20px auto;
+
+}
+.cellprefix{
+    width:100%;
+    height:100%;
+    max-height: 50px;
+    max-width: 50px;
+    float: left;
+    margin: 3px;
+    padding: 15px 0 0 20px;
+
+}
+.cell{
+    border: 1px solid #00a4a2;
+    width:100%;
+    height:100%;
+    max-height: 50px;
+    max-width: 50px;
+    float:left;
+    margin:3px;
+    transition: all 0.5s ease-in-out;
+    border-radius: 5px;
+    padding: 0 0 0 6px;
+    font-size: 30pt;
+    cursor: pointer;
+    z-index: 1;
+
+}
+.cell:hover{
+    color: #fff;
+    background: rgba(49, 125, 145, 0.7);
+    z-index: 2;
+    transform: translate(5px, -5px);
+    animation: solution 1.5s ease-in-out infinite alternate;
+
+
+}
+.b{
+    background: rgba(90, 87, 87, 0.8);
+}
