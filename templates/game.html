@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="game_form">
-    Gracz {{ session["player"] + 1 }}
+    Gracz {{ session["player"] }}
     <form method="post">
         Wybierz rząd:
         {% for subfield in form.row %}

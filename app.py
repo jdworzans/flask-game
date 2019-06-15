@@ -18,26 +18,42 @@ def start():
         col2 = form.colour2.raw_data
         session['col1'] = col1
         session['col2'] = col2
-        session['player'] = False
         return redirect('play')
     return render_template('start.html', form=form)
 
 @app.route("/play", methods=["GET", "POST"])
 def play():
     form = gameForm()
+    winnings = [set([(1,1), (1,2), (1,3)]),
+                set([(2,1), (2,2), (2,3)]),
+                set([(3,1), (3,2), (3,3)]),
+                set([(1,1), (2,1), (3,1)]),
+                set([(1,2), (2,2), (3,2)]),
+                set([(1,3), (2,3), (3,3)]),
+                set([(1,1), (2,2), (3,3)]),
+                set([(3,1), (2,2), (1,3)])
+                ]
     if request.method == "POST":
         row = int(form.row.data)
         col = int(form.col.data)
-        cords = [row, col]
+        cords = (row, col)
         if cords in session['progress']:
             session["msg"]="Wybierz inne pole, to już jest zajęte."
         else:
             session['progress'] = session['progress'] + [cords]
+            moves = set(session['progress'][session['player']-1::2])
+            for win in winnings:
+                if win.issubset(moves):
+                    session["win"] = True
             session["msg"]= ""
-            session["player"] = not session["player"]
+            session["player"] = session["player"]%2 + 1
+        if session["win"]:
+            return(render_template("win.html", context=session))
         return(render_template("game.html", form=form, context=session))
     session['progress'] = []
     session["msg"] = ""
+    session["win"] = False
+    session['player'] = 1
     return(render_template("game.html", form=form, context=session))
 
 @app.route("/help")

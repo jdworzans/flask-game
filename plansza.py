@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 
 def odejmowanie(lista):
-    for i in lista:
-        i[0]-=0.5
-        i[1]-=0.5
+    #for i in lista:
+        # i[0]-=0.5
+        # i[1]-=0.5
     return lista
 
 
