@@ -3,8 +3,9 @@ import io
 import random
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
-from forms import gameForm
+from forms import gameForm, startForm
 from plansza import rysuj
+from colour import Color
 
 app = Flask(__name__)
 app.secret_key = b'technologie informacyjne'
@@ -13,7 +14,7 @@ app.secret_key = b'technologie informacyjne'
 def help():
     return(render_template("instruction.html"))
 
-@app.route("/", methods=["GET", "POST"])
+@app.route("/play", methods=["GET", "POST"])
 def play():
     form = gameForm()
     if request.method == "POST":
@@ -36,10 +37,21 @@ def about():
 
 @app.route('/plot.png')
 def plot_png():
-    fig = rysuj(session['progress'])
+    fig = rysuj(session['progress'], session['col1'], session['col2'])
     output = io.BytesIO()
     FigureCanvasAgg(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')
+
+@app.route('/', methods=["GET", "POST"])
+def start():
+    form = startForm()
+    if request.method == "POST":
+        col1 = Color(form.colour1)
+        col2 = Color(form.colour2)
+        session['col1'] = col1
+        session['col2'] = col2
+        return redirect('game.html')
+    return render_template('start.html', form=form)
 
 def create_figure():
     fig = Figure()
