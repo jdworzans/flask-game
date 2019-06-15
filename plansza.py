@@ -19,8 +19,8 @@ def rysuj(lista):
         igreki.append(k[1])
     #print(lista)
     #print(iksy, igreki)
-    plt.scatter(iksy[0::2], igreki[0::2], s = 1000, c="pink")
-    plt.scatter(iksy[1::2], igreki[1::2], s = 1000, c="blue")
+    plt.scatter(iksy[0::2], igreki[0::2], s = 7000, c="pink")
+    plt.scatter(iksy[1::2], igreki[1::2], s = 7000, c="blue")
     plt.plot()
     ax = plt.gca()
     #ax.set_xticks([1,2,3])
@@ -31,4 +31,4 @@ def rysuj(lista):
     plt.grid()
     plt.show()
 
-#rysuj(próba)
+rysuj(próba)
