@@ -25,6 +25,8 @@ def rysuj(lista):
     axis.scatter(iksy[1::2], igreki[1::2], s = 7000, c="blue")
     axis.set_xlim(0,3)
     axis.set_ylim(0,3)
+    axis.set_xticks([1,2,3])
+    axis.set_yticks([1,2,3])
     axis.tick_params(left = False, bottom = False)
     axis.grid()
     return fig 
