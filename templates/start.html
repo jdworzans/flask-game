@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id='wybory'>
+    <form method="post">
+        Wybierz kolor: <br>
+        {{ form.colour1 }}
+        {{ form.colour2 }}
+        <input type="submit" value="Zatwierdź">
+    
+    </form>
+</div>
+{% endblock %}
