@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
-<img src="/plot.png" alt="plot" height=50% width=50% >
-
 <div class="game_form">
     <form method="post">
-        Wybierz rząd:<br>
+        Wybierz rząd:
+        <br>
         {% for subfield in form.row %}
         <tr>
             <td>{{ subfield }}</td>
             <td>{{ subfield.label }}</td>
         </tr>
         {% endfor %}<br>
-        Wybierz kolumnę:<br>
+        Wybierz kolumnę:
+        <br><table>
         {% for subfield in form.col %}
-        <tr>
-            <td>{{ subfield }}</td>
-            <td>{{ subfield.label }}</td>
-        </tr>
-        {% endfor %}<br>
+        <th>
+            <td>{{ subfield }}{{ subfield.label }}</td>
+        </th>
+        {% endfor %}
+        </table><br>
         <input type="submit" value="Zatwierdź">
     </form>
     {% if session["msg"] %}
@@ -25,5 +25,6 @@
     {{ session["msg"] }}
     </p>
     {% endif %}
+    <img id="gameboard" src="/plot.png" alt="gameboard">
 </div>
 {% endblock %}

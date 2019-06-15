@@ -50,8 +50,13 @@ footer {
 }
 .game_form {
     text-align: center;
-<<<<<<< HEAD
 }
-=======
+#content {
+    margin-bottom: 20px;
 }
->>>>>>> edcda315cb3490ac8bacec7389eda5d26960da56
+#gameboard {
+    width: 40%;
+    height: 40%;
+    display: block;
+    margin: auto;
+}
