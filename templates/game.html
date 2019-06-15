@@ -3,19 +3,26 @@
 <img src="/plot.png" alt="plot" height=100px width=100px>
 
 <div class="game_form">
-<form method="post">
-    Wybierz rząd:<br>
-    <input type="radio" name="row" value="1"> 1
-    <input type="radio" name="row" value="2"> 2
-    <input type="radio" name="row" value="3"> 3<br>
-    Wybierz kolumnę:<br>
-    <input type="radio" name="col" value="a"> A
-    <input type="radio" name="col" value="b"> B
-    <input type="radio" name="col" value="c"> C<br>
-    <input type="button" type="submit" value="Zatwierdź">
-</form>
-{% for val in context %}
-<p>val</p>
-{% endfor %}
+    <form method="post">
+        Wybierz rząd:<br>
+        {% for subfield in form.row %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %}<br>
+        Wybierz kolumnę:<br>
+        {% for subfield in form.col %}
+        <tr>
+            <td>{{ subfield }}</td>
+            <td>{{ subfield.label }}</td>
+        </tr>
+        {% endfor %}<br>
+        <input type="submit" value="Zatwierdź">
+    </form>
+    {% if session["msg"] %}
+    {{ session["msg"] }}
+    {% endif %}
+{{ session["progress"] }}
 </div>
 {% endblock %}

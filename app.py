@@ -1,10 +1,12 @@
-from flask import Flask, render_template, Response, request, redirect
+from flask import Flask, render_template, Response, request, redirect, session
 import io
 import random
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
+from forms import gameForm
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/help")
 def help():
@@ -12,9 +14,20 @@ def help():
 
 @app.route("/", methods=["GET", "POST"])
 def play():
+    form = gameForm()
     if request.method == "POST":
-        return(render_template("game.html", context=request.args))
-    return(render_template("game.html", context=[]))
+        row = int(form.row.data)
+        col = int(form.col.data)
+        cords = [row, col]
+        if cords in session['progress']:
+            session["msg"]="Wybierz inne pole, to już jest zajęte."
+        else:
+            session['progress'] = session['progress'] + [cords]
+            session["msg"]= ""
+        return(render_template("game.html", form=form, context=session))
+    session['progress'] = []
+    session["msg"] = ""
+    return(render_template("game.html", form=form, context=session))
 
 @app.route("/about")
 def about():
