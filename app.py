@@ -46,11 +46,11 @@ def plot_png():
 def start():
     form = startForm()
     if request.method == "POST":
-        col1 = Color(form.colour1)
-        col2 = Color(form.colour2)
+        col1 = form.colour1.raw_data
+        col2 = form.colour2.raw_data
         session['col1'] = col1
         session['col2'] = col2
-        return redirect('game.html')
+        return redirect('play')
     return render_template('start.html', form=form)
 
 def create_figure():

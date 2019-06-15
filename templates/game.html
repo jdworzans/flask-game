@@ -3,21 +3,13 @@
 <div class="game_form">
     <form method="post">
         Wybierz rząd:
-        <br>
         {% for subfield in form.row %}
-        <tr>
-            <td>{{ subfield }}</td>
-            <td>{{ subfield.label }}</td>
-        </tr>
+        {{ subfield }}{{ subfield.label }}
         {% endfor %}<br>
         Wybierz kolumnę:
-        <br><table>
         {% for subfield in form.col %}
-        <th>
-            <td>{{ subfield }}{{ subfield.label }}</td>
-        </th>
-        {% endfor %}
-        </table><br>
+        {{ subfield }}{{ subfield.label }}
+        {% endfor %}<br>
         <input type="submit" value="Zatwierdź">
     </form>
     {% if session["msg"] %}
