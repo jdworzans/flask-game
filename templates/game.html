@@ -21,7 +21,9 @@
         <input type="submit" value="Zatwierdź">
     </form>
     {% if session["msg"] %}
+    <p class="err_msg">
     {{ session["msg"] }}
+    </p>
     {% endif %}
 </div>
 {% endblock %}
