@@ -4,6 +4,7 @@ import random
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 from forms import gameForm
+from plansza import rysuj
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -35,7 +36,7 @@ def about():
 
 @app.route('/plot.png')
 def plot_png():
-    fig = create_figure()
+    fig = rysuj(session['progress'])
     output = io.BytesIO()
     FigureCanvasAgg(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')

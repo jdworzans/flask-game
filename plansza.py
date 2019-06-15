@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt 
 import numpy as np
-
+from matplotlib.figure import Figure
 próba = [[1,2], [1,1], [2,3]]
 def odejmowanie(lista):
     for i in lista:
@@ -19,16 +19,14 @@ def rysuj(lista):
         igreki.append(k[1])
     #print(lista)
     #print(iksy, igreki)
-    plt.scatter(iksy[0::2], igreki[0::2], s = 7000, c="pink")
-    plt.scatter(iksy[1::2], igreki[1::2], s = 7000, c="blue")
-    plt.plot()
-    ax = plt.gca()
-    #ax.set_xticks([1,2,3])
-    #ax.set_yticks([1,2,3])
-    plt.xlim(0,3)
-    plt.ylim(0,3)
-    ax.tick_params(left = False, bottom = False)
-    plt.grid()
-    plt.show()
+    fig, axis = plt.subplots(1,1)
+    # axis = fig.add_axes()
+    axis.scatter(iksy[0::2], igreki[0::2], s = 7000, c="pink")
+    axis.scatter(iksy[1::2], igreki[1::2], s = 7000, c="blue")
+    axis.set_xlim(0,3)
+    axis.set_ylim(0,3)
+    axis.tick_params(left = False, bottom = False)
+    axis.grid()
+    return fig 
 
 rysuj(próba)
