@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <div id='wybory'>
-    <form method="post">
-        Wybierz kolor: <br>
-        {{ form.colour1 }}
-        {{ form.colour2 }}
+    <form id=""method="post">
+        Wybierzcie kolory:<br>
+        Gracz 1:
+        {{ form.colour1 }}<br>
+        Gracz 2:
+        {{ form.colour2 }}<br>
         <input type="submit" value="Zatwierdź">
     
     </form>

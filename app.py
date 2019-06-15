@@ -10,9 +10,17 @@ from colour import Color
 app = Flask(__name__)
 app.secret_key = b'technologie informacyjne'
 
-@app.route("/help")
-def help():
-    return(render_template("instruction.html"))
+@app.route('/', methods=["GET", "POST"])
+def start():
+    form = startForm()
+    if request.method == "POST":
+        col1 = form.colour1.raw_data
+        col2 = form.colour2.raw_data
+        session['col1'] = col1
+        session['col2'] = col2
+        session['player'] = False
+        return redirect('play')
+    return render_template('start.html', form=form)
 
 @app.route("/play", methods=["GET", "POST"])
 def play():
@@ -26,10 +34,15 @@ def play():
         else:
             session['progress'] = session['progress'] + [cords]
             session["msg"]= ""
+            session["player"] = not session["player"]
         return(render_template("game.html", form=form, context=session))
     session['progress'] = []
     session["msg"] = ""
     return(render_template("game.html", form=form, context=session))
+
+@app.route("/help")
+def help():
+    return(render_template("instruction.html"))
 
 @app.route("/about")
 def about():
@@ -41,22 +54,3 @@ def plot_png():
     output = io.BytesIO()
     FigureCanvasAgg(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')
-
-@app.route('/', methods=["GET", "POST"])
-def start():
-    form = startForm()
-    if request.method == "POST":
-        col1 = form.colour1.raw_data
-        col2 = form.colour2.raw_data
-        session['col1'] = col1
-        session['col2'] = col2
-        return redirect('play')
-    return render_template('start.html', form=form)
-
-def create_figure():
-    fig = Figure()
-    axis = fig.add_subplot(1, 1, 1)
-    xs = range(100)
-    ys = [random.randint(1, 50) for x in xs]
-    axis.plot(xs, ys)
-    return fig
