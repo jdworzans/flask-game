@@ -40,7 +40,7 @@ def play():
         if cords in session['progress']:
             session["msg"]="Wybierz inne pole, to już jest zajęte."
         else:
-            session['progress'] = session['progress'] + [cords]
+            session['progress'].append(cords)
             moves = set(session['progress'][session['player']-1::2])
             for win in winnings:
                 if win.issubset(moves):

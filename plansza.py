@@ -1,16 +1,16 @@
 import matplotlib.pyplot as plt
 
 def odejmowanie(lista):
-    #for i in lista:
-        # i[0]-=0.5
-        # i[1]-=0.5
-    return lista
+    wynik = []
+    for i in lista:
+        wynik.append([i[0]-0.5, i[1]-0.5])
+    return wynik
 
 
 def rysuj(lista, col1, col2):
-    lista = odejmowanie(lista)
+    nowa = odejmowanie(lista)
     iksy, igreki = [], []
-    for k in lista:
+    for k in nowa:
         iksy.append(k[0])
         igreki.append(k[1])
     fig, axis = plt.subplots(1,1)
@@ -22,4 +22,4 @@ def rysuj(lista, col1, col2):
     axis.set_yticks([1,2,3])
     axis.tick_params(left = False, bottom = False)
     axis.grid()
-    return fig 
+    return fig
