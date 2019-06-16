@@ -17,9 +17,13 @@ nav ul {
 }
 nav ul li {
     float: left;
-    width: 100%;
+    width: 33.3%;
     text-align: center;
-    font-size: x-large;
+}
+@media only screen and (max-width: 600px) {
+    nav ul li {
+        width: 100%;
+    }
 }
 nav a {
     text-decoration: none;
@@ -63,12 +67,4 @@ footer {
 }
 .wybory {
     text-align: center;
-}
-@media only screen and (min-width: 600px) {
-    nav ul li {
-        float: left;
-        width: 33.3%;
-        text-align: center;
-        font-size: large;
-    }
 }
