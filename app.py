@@ -49,7 +49,7 @@ def play():
             session["player"] = session["player"]%2 + 1
         if session["win"]:
             return(render_template("win.html", context=session))
-        if len(session['win']) == 9:
+        if len(session['progress']) == 9:
             return(render_template("draw.html", context=session))
         return(render_template("game.html", form=form, context=session))
     session['progress'] = []
