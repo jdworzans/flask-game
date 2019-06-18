@@ -4,7 +4,7 @@ import random
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
 from forms import gameForm, startForm
-from plansza import rysuj
+from gameboard import draw
 from colour import Color
 
 app = Flask(__name__)
@@ -37,8 +37,8 @@ def play():
         return(render_template("draw.html", context=session, str=str))
     return(render_template("game.html", context=session, str=str))
 
-@app.route("/play/<pole>/")
-def move(pole):
+@app.route("/play/<field>/")
+def move(field):
     winnings = [set([(1,1), (1,2), (1,3)]),
                 set([(2,1), (2,2), (2,3)]),
                 set([(3,1), (3,2), (3,3)]),
@@ -48,8 +48,8 @@ def move(pole):
                 set([(1,1), (2,2), (3,3)]),
                 set([(3,1), (2,2), (1,3)])
                 ]
-    row = int(pole[0])
-    col = int(pole[1])
+    row = int(field[0])
+    col = int(field[1])
     cords = (row, col)
     if cords in session['progress']:
         session["msg"]="Wybierz inne pole, to już jest zajęte."

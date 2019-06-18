@@ -10,7 +10,7 @@ class gameForm(FlaskForm):
 class startForm(FlaskForm):
     colour1 = ColorField(label="colour1", default="#ff0000")
     colour2 = ColorField(label="colour2", default="#000000")
-    username1 = StringField('Username 1:')
-    username2 = StringField('Username 2:')
+    username1 = StringField('Username 1:', default="Gracz 1")
+    username2 = StringField('Username 2:', default="Gracz 2")
 
 
