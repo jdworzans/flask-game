@@ -2,17 +2,6 @@
 {% block content %}
 <div class="game_form">
     Gracz {{ session["player"] }}
-    <form method="post">
-        Wybierz rząd:
-        {% for subfield in form.row %}
-        {{ subfield }}{{ subfield.label }}
-        {% endfor %}<br>
-        Wybierz kolumnę:
-        {% for subfield in form.col %}
-        {{ subfield }}{{ subfield.label }}
-        {% endfor %}<br>
-        <input type="submit" value="Zatwierdź">
-    </form>
     {% if session["msg"] %}
     <p class="err_msg">
     {{ session["msg"] }}
@@ -21,15 +10,15 @@
     <!-- obrazek ma wymiary 640x480px -->
     <img id="gameboard" src="/plot.png" alt="gameboard" usemap="#circlemap">
     <map name=circlemap>
-        <area shape="rect" coords="0,0,213,160" alt="3A">
-        <area shape="rect" coords="214,0,426,160" alt="3B">
-        <area shape="rect" coords="427,0,639,160" alt="3C">
-        <area shape="rect" coords="0,160,213,320" alt="2A">
-        <area shape="rect" coords="213,160,427,320" alt="2B">
-        <area shape="rect" coords="427,160,639,320", alt="2C">
-        <area shape="rect" coords="0,320,213,479" alt="1A">
-        <area shape="rect" coords="213,320,427,479" alt="1B">
-        <area shape="rect" coords="427,320,639,479" alt="1C">
+        <area shape="rect" coords="0,0,213,160"     alt="3A" href="/play/31/">
+        <area shape="rect" coords="214,0,426,160"   alt="3B" href="/play/32/">
+        <area shape="rect" coords="427,0,639,160"   alt="3C" href="/play/33/">
+        <area shape="rect" coords="0,160,213,320"   alt="2A" href="/play/21/">
+        <area shape="rect" coords="213,160,427,320" alt="2B" href="/play/22/">
+        <area shape="rect" coords="427,160,639,320" alt="2C" href="/play/23/">
+        <area shape="rect" coords="0,320,213,479"   alt="1A" href="/play/11/">
+        <area shape="rect" coords="213,320,427,479" alt="1B" href="/play/12/">
+        <area shape="rect" coords="427,320,639,479" alt="1C" href="/play/13/">
     </map>
 
 </div>

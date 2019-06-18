@@ -18,12 +18,23 @@ def start():
         col2 = form.colour2.raw_data
         session['col1'] = col1
         session['col2'] = col2
+        session['progress'] = []
+        session["msg"] = ""
+        session["win"] = False
+        session['player'] = 1
         return redirect('play')
     return render_template('start.html', form=form)
 
 @app.route("/play", methods=["GET", "POST"])
 def play():
-    form = gameForm()
+    if session["win"]:
+        return(render_template("win.html", context=session))
+    if len(session['progress']) == 9:
+        return(render_template("draw.html", context=session))
+    return(render_template("game.html", context=session))
+
+@app.route("/play/<pole>/")
+def move(pole):
     winnings = [set([(1,1), (1,2), (1,3)]),
                 set([(2,1), (2,2), (2,3)]),
                 set([(3,1), (3,2), (3,3)]),
@@ -33,30 +44,21 @@ def play():
                 set([(1,1), (2,2), (3,3)]),
                 set([(3,1), (2,2), (1,3)])
                 ]
-    if request.method == "POST":
-        row = int(form.row.data)
-        col = int(form.col.data)
-        cords = (row, col)
-        if cords in session['progress']:
-            session["msg"]="Wybierz inne pole, to już jest zajęte."
-        else:
-            session['progress'].append(cords)
-            moves = set(session['progress'][session['player']-1::2])
-            for win in winnings:
-                if win.issubset(moves):
-                    session["win"] = True
-            session["msg"]= ""
-            session["player"] = session["player"]%2 + 1
-        if session["win"]:
-            return(render_template("win.html", context=session))
-        if len(session['progress']) == 9:
-            return(render_template("draw.html", context=session))
-        return(render_template("game.html", form=form, context=session))
-    session['progress'] = []
-    session["msg"] = ""
-    session["win"] = False
-    session['player'] = 1
-    return(render_template("game.html", form=form, context=session))
+    row = int(pole[0])
+    col = int(pole[1])
+    cords = (row, col)
+    if cords in session['progress']:
+        session["msg"]="Wybierz inne pole, to już jest zajęte."
+    else:
+        session['progress'].append(cords)
+        moves = set(session['progress'][session['player']-1::2])
+        for win in winnings:
+            if win.issubset(moves):
+                session["win"] = True
+        session["msg"]= ""
+        session["player"] = session["player"]%2 + 1
+    return redirect('/play')
+
 
 @app.route("/help")
 def help():
