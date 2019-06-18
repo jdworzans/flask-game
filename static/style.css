@@ -17,7 +17,7 @@ nav ul {
 }
 nav ul li {
     float: left;
-    width: 33.3%;
+    width: 33.3333%;
     text-align: center;
 }
 nav a {
@@ -47,6 +47,7 @@ footer {
     margin: 0 auto;
     max-width: 40em;
     hyphens: auto;
+    text-align: center;
 }
 .game_form {
     text-align: center;
@@ -55,6 +56,7 @@ footer {
 }
 #content {
     margin-bottom: 20px;
+    margin: auto;
 }
 #gameboard {
     display: block;
@@ -64,5 +66,21 @@ footer {
     object-fit: contain;
 }
 .wybory {
+    text-align: center;
+}
+#im1 {
+    float: left;
+    margin: auto;
+    margin: 100px 10px 20px;
+}
+#im2 {
+    float: right;
+    margin: auto;
+    margin: 100px 10px 20px;
+}
+#about {
+    margin: 0 auto;
+    max-width: 40em;
+    hyphens: auto;
     text-align: center;
 }

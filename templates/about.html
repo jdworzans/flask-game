@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-<div id='instrukcja'>
-    <h2>Tu będzie jeszcze kiedyś instrukcja.</h2>
-    <p>Kilka słów o nas</p>
-</div>
+<img id="im1" src="{{ url_for('static', filename='images/IMG1.JPG') }}" width=360px height=270px alt="Emilia i Jakub na tle jakiegoś statku w Gdyni">
+<img id="im2" src="{{ url_for('static', filename='images/IMG2.JPG') }}" width=360px height=270px alt="Emilia i Jakub w SPN koło Łeby">
+
+    <div id='about'>
+        <h2>Kilka słów o nas</h2>
+        <p>Jesteśmy studentami pierwszego roku Matematyki i Statystyki.</p>
+    </div>
 {% endblock %}
