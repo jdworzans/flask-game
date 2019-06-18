@@ -50,15 +50,18 @@ footer {
 }
 .game_form {
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
 #content {
     margin-bottom: 20px;
 }
 #gameboard {
-    width: 640px;
-    height: 480px;
     display: block;
     margin: auto;
+    height: 45%;
+    width: 45%;
+    object-fit: contain;
 }
 .wybory {
     text-align: center;
