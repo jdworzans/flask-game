@@ -16,6 +16,10 @@ def start():
     if request.method == "POST":
         col1 = form.colour1.raw_data
         col2 = form.colour2.raw_data
+        username1 = form.username1.data
+        username2 = form.username2.data
+        session["1"] = username1
+        session['2'] = username2
         session['col1'] = col1
         session['col2'] = col2
         session['progress'] = []
@@ -28,10 +32,10 @@ def start():
 @app.route("/play", methods=["GET", "POST"])
 def play():
     if session["win"]:
-        return(render_template("win.html", context=session))
+        return(render_template("win.html", context=session, str=str))
     if len(session['progress']) == 9:
-        return(render_template("draw.html", context=session))
-    return(render_template("game.html", context=session))
+        return(render_template("draw.html", context=session, str=str))
+    return(render_template("game.html", context=session, str=str))
 
 @app.route("/play/<pole>/")
 def move(pole):

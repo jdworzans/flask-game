@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="game_form">
-    Gracz {{ session["player"] }}
+    {{ session[str(session["player"])] }}
     {% if session["msg"] %}
     <p class="err_msg">
     {{ session["msg"] }}
