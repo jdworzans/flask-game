@@ -12,8 +12,8 @@ def substract(iterable, number=0.5):
         iterable (iterable): Iterable with substracted coordinates.
     """
     result = []
-    for i in iterable:
-        result.append([iterable[0]-number, i[1]-number])
+    for item in iterable:
+        result.append([item[0]-number, item[1]-number])
     return result
 
 def draw(progress, col1, col2):
@@ -30,9 +30,9 @@ def draw(progress, col1, col2):
     """
     coords = substract(progress)
     x, y = [], []
-    for xy in coords:
-        x.append(xy[0])
-        y.append(xy[1])
+    for yx in coords:
+        y.append(yx[0])
+        x.append(yx[1])
 
     # Prepare figure and axis
     fig, axis = plt.subplots(1,1)
