@@ -43,12 +43,12 @@ footer {
     width: 100%;
     font-size: 0.7rem;
 }
-#instrukcja {
+#instruction {
     margin: 0 auto;
     max-width: 40em;
     hyphens: auto;
     text-align: center;
-    
+
 }
 .game_form {
     text-align: center;

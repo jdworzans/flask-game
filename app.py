@@ -12,6 +12,7 @@ app.secret_key = b'technologie informacyjne'
 
 @app.route('/', methods=["GET", "POST"])
 def start():
+    """Returns a start page"""
     form = startForm()
     if request.method == "POST":
         col1 = form.colour1.raw_data
@@ -31,6 +32,8 @@ def start():
 
 @app.route("/play", methods=["GET", "POST"])
 def play():
+    """Returns win or draw or game template depending on 
+    session status"""
     if session["win"]:
         return(render_template("win.html", context=session, str=str))
     if len(session['progress']) == 9:
@@ -39,6 +42,9 @@ def play():
 
 @app.route("/play/<field>/")
 def move(field):
+    """Returns status of game
+    
+    Args: field (str):  """
     winnings = [set([(1,1), (1,2), (1,3)]),
                 set([(2,1), (2,2), (2,3)]),
                 set([(3,1), (3,2), (3,3)]),
