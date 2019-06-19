@@ -1,11 +1,12 @@
-from flask import Flask, render_template, Response, request, redirect, session
 import io
-import random
+
+from flask import Flask, render_template, Response, request, redirect, session
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.figure import Figure
+
 from forms import gameForm, startForm
 from gameboard import draw
-from colour import Color
+
 
 app = Flask(__name__)
 app.secret_key = b'technologie informacyjne'
@@ -80,7 +81,7 @@ def about():
 
 @app.route('/plot.png')
 def plot_png():
-    fig = rysuj(session['progress'], session['col1'], session['col2'])
+    fig = draw(session['progress'], session['col1'], session['col2'])
     output = io.BytesIO()
     FigureCanvasAgg(fig).print_png(output)
     return Response(output.getvalue(), mimetype='image/png')
