@@ -42,10 +42,11 @@ footer {
     background-color: rgba(83, 199, 72);
     width: 100%;
     font-size: 0.7rem;
+    max-height: 15px;
 }
 #instruction {
     margin: 0 auto;
-    max-width: 40em;
+    max-width: 40rem;
     hyphens: auto;
     text-align: center;
 
@@ -57,7 +58,6 @@ footer {
 }
 #content {
     margin-bottom: 20px;
-    margin: auto;
 }
 #gameboard {
     display: block;
@@ -71,12 +71,10 @@ footer {
 }
 #im1 {
     float: left;
-    margin: auto;
     margin: 100px 10px 20px;
 }
 #im2 {
     float: right;
-    margin: auto;
     margin: 100px 10px 20px;
 }
 #about {
@@ -84,4 +82,21 @@ footer {
     max-width: 40em;
     hyphens: auto;
     text-align: center;
+}
+@media only screen and (max-width: 1080px) {
+    #im2 {
+        display: none;
+    }
+    #im1 {
+        float: none;
+        display: block;
+        margin: auto;
+        max-width: 70%;
+        height: auto;
+    }
+    #images {
+        text-align: center;
+        margin-top: 30px;
+        width: 100%;
+    }
 }
