@@ -2,14 +2,14 @@
 {% block content %}
 <div class='wybory'>
     <form method="post">
-        Wpisz nazwę pierwszego gracza: <br>
+        {{ form.username1.label }}: <br>
         {{ form.username1 }}<br>
-        Wpisz nazwę drugiego gracza:<br>
+        {{ form.username2.label }}:<br>
         {{ form.username2 }}<br>
         Wybierzcie kolory:<br>
-        Gracz 1:
+        {{ form.colour1.label }}:
         {{ form.colour1 }}<br>
-        Gracz 2:
+        {{ form.colour2.label }}:
         {{ form.colour2 }}<br>
         <input type="submit" value="Zatwierdź">
     
