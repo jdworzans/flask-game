@@ -48,8 +48,7 @@ footer {
     margin: 0 auto;
     max-width: 40rem;
     hyphens: auto;
-    text-align: center;
-
+    text-align: left;
 }
 .game_form {
     text-align: center;
@@ -99,4 +98,7 @@ footer {
         margin-top: 30px;
         width: 100%;
     }
+}
+#helph2 {
+    text-align: center;
 }
