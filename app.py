@@ -27,7 +27,7 @@ def start():
         session['progress'] = []
         session["msg"] = ""
         session["win"] = False
-        session['player'] = 1
+        session['player'] = 2
         return redirect('play')
     return render_template('start.html', form=form)
 
@@ -39,6 +39,7 @@ def play():
         return(render_template("win.html", context=session, str=str))
     if len(session['progress']) == 9:
         return(render_template("draw.html", context=session, str=str))
+    session["player"] = session["player"]%2 + 1
     return(render_template("game.html", context=session, str=str))
 
 @app.route("/play/<field>/")
@@ -71,7 +72,7 @@ def move(field):
             if win.issubset(moves):
                 session["win"] = True
         session["msg"]= ""
-        session["player"] = session["player"]%2 + 1
+        
     return redirect('/play')
 
 
