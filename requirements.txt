@@ -3,7 +3,7 @@ Click==7.0
 colour==0.1.5
 cycler==0.10.0
 decorator==4.4.0
-Flask==1.0.3
+Flask==2.2.5
 Flask-WTF==0.14.2
 gunicorn==19.9.0
 infinity==1.4
